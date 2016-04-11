@@ -1,0 +1,40 @@
+.size {
+    width: 200px;
+    height: 200px;
+    padding: 22px;
+    border: 10px solid #EFBBD2;
+    margin: 10px;
+}
+
+.row {
+    position: relative;
+    bottom: 100px;
+}
+
+.digglet {
+    width: 100px;
+    padding: 40px;
+    margin: 25px;
+    background-image: url(/img/dig.png);
+    background-size: 100%
+}
+
+body {
+    background-image: url(/img/digletbackground.jpg);
+    background-size: 100%;
+}
+
+.btn {
+    position: relative;
+    left: 800px;
+    bottom: 750px;
+}
+
+#score {
+    position: relative;
+    left: 670px;
+    top: 20px;
+    font-size: 50px;
+}
+
+
