@@ -3,6 +3,7 @@
 <head>
     <title>Whack-a-Diglett Game</title>
 
+    <!-- jQuery -->
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 
     <!-- Latest compiled and minified CSS -->
@@ -13,62 +14,68 @@
 
     <link rel="stylesheet"  href="/css/whackamole.css">
 
+    <!-- Page icon -->
+    <link rel="icon" href="/img/dugtrio.png">
+
+    <!-- Page Title in Pokemon style font -->
+    <img src="/img/pkmnfont.png" alt="Pokemon Font">
+
 </head>
 <body>
 
-<audio id="myAudio">
-  <source src="/sound/pkmnbattle.mp3">
-</audio>
+    <!-- JavaScript for game -->
+    <script src="/js/whackamole.js"></script>
 
-<img src="/img/pkmnfont.png" alt="Pokemon Font">
+    <!-- paragraphs containing number values -->
+    <p class= "container" id="score"> </p>
 
-<p class= "container" id="score"> </p>
+    <p class= "container" id="timer"> </p>
 
-<p class= "container" id="timer"> </p>
+    <p class= "container" id="highScore"> </p>
 
-<p class= "container" id="highScore"> </p>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-2 size">
-            <div id="box1" class="digglet"></div>
+    <!-- Grid that contains game board -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 size">
+                <div id="box1" class="diglett"></div>
+            </div>
+            <div class="col-md-2 size">
+                <div id="box2" class="diglett"></div>
+            </div>
+            <div class="col-md-2 size">
+                <div id="box3" class="diglett"></div>
+            </div>
         </div>
-        <div class="col-md-2 size">
-            <div id="box2" class="digglet"></div>
+        <div class="row">
+            <div class="col-md-2 size">
+                <div id="box4" class="diglett"></div>
+            </div>
+            <div class="col-md-2 size">
+                <div id="box5" class="diglett"></div>
+            </div>
+            <div class="col-md-2 size">
+                <div id="box6" class="diglett"></div>
+            </div>
         </div>
-        <div class="col-md-2 size">
-            <div id="box3" class="digglet"></div>
+        <div class="row">
+            <div class="col-md-2 size">
+                <div id="box7" class="diglett"></div>
+            </div>
+            <div class="col-md-2 size">
+                <div id="box8" class="diglett"></div>
+            </div>
+            <div class="col-md-2 size">
+                <div id="box9" class="diglett"></div>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-2 size">
-            <div id="box4" class="digglet"></div>
-        </div>
-        <div class="col-md-2 size">
-            <div id="box5" class="digglet"></div>
-        </div>
-        <div class="col-md-2 size">
-            <div id="box6" class="digglet"></div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2 size">
-            <div id="box7" class="digglet"></div>
-        </div>
-        <div class="col-md-2 size">
-            <div id="box8" class="digglet"></div>
-        </div>
-        <div class="col-md-2 size">
-            <div id="box9" class="digglet"></div>
-        </div>
-    </div>
-</div>
 
-<button type="button" class="btn btn-primary" id="startButton">Start Game</button>
-<button type="button" class="btn btn-danger" id="resetButton">Restart Game</button>
+    <!-- buttons to start and restart game -->
+    <button type="button" class="btn btn-primary" id="startButton">Start Game</button>
+    <button type="button" class="btn btn-danger" id="resetButton">Restart Game</button>
 
-<!-- JavaScript for game -->
-<script src="/js/whackamole.js"></script>
+</body>
+</html>
 
 
 

@@ -1,28 +1,32 @@
 $(document).ready(function() {
 "use strict";
 
+// Looping audio that starts once start button is pressed
 var audio = new Audio('/sound/pkmnbattle.mp3');
 audio.loop = true;
-audio.play();
-
+// player score variable
 var score = 0;
-
+// timer variable
 var timer = 30;
-
+// high score variable
 var highScore = 0;
-
+//rate moles show up
+var speed = 2000;
+// random number generation
 var x = Math.floor((Math.random() * 9) + 1);
-
+// displays score
 $('#score').html('Score: ' + score);
-
+// displays time remaining
 $('#timer').html('Time Remaining: ' + timer+'s');
-
+// displays high score
 $('#highScore').html('High Score: ' + highScore);
 
+// Generates random number to reference for mole positioning
 var whackPattern = setInterval(function() {
     x = Math.floor((Math.random() * 9) + 1);
     }, 1000);
 
+// Constantly and rapidly checks high score to make it appear that high score changes as soon as a new high score is reached
 var checkHighScore = setInterval(function() {
         if (score > highScore){
             highScore = score;
@@ -30,33 +34,43 @@ var checkHighScore = setInterval(function() {
         }
     }, 20);
 
-$('.digglet').fadeOut("slow");
+// initially hides moles so that they can fadeIn and out with the random number generator.
+$('.diglett').fadeOut('slow');
 
+// Randomly causes a mole to appear in one of nine div boxes.
 function startGame(){
     var gameInterval = setInterval (function() { 
     endGame();
+    audio.play();
     if (x == 1){
-        $('#box1.digglet').fadeIn('slow').fadeOut('slow');
+        $('#box1.diglett').fadeIn('slow').fadeOut('slow');
     } else if (x == 2){
-        $('#box2.digglet').fadeIn('slow').fadeOut('slow');
+        $('#box2.diglett').fadeIn('slow').fadeOut('slow');
     } else if (x == 3){
-        $('#box3.digglet').fadeIn('slow').fadeOut('slow');
+        $('#box3.diglett').fadeIn('slow').fadeOut('slow');
     } else if (x == 4){ 
-        $('#box4.digglet').fadeIn('slow').fadeOut('slow');
+        $('#box4.diglett').fadeIn('slow').fadeOut('slow');
     } else if (x == 5){ 
-        $('#box5.digglet').fadeIn('slow').fadeOut('slow');
+        $('#box5.diglett').fadeIn('slow').fadeOut('slow');
     } else if (x == 6){ 
-        $('#box6.digglet').fadeIn('slow').fadeOut('slow');
+        $('#box6.diglett').fadeIn('slow').fadeOut('slow');
     } else if (x == 7){ 
-        $('#box7.digglet').fadeIn('slow').fadeOut('slow');
+        $('#box7.diglett').fadeIn('slow').fadeOut('slow');
     } else if (x == 8){ 
-        $('#box8.digglet').fadeIn('slow').fadeOut('slow');
+        $('#box8.diglett').fadeIn('slow').fadeOut('slow');
     } else if (x == 9){ 
-        $('#box9.digglet').fadeIn('slow').fadeOut('slow');
+        $('#box9.diglett').fadeIn('slow').fadeOut('slow');
     };
-    }, 1500);
+    }, speed);
 };
 
+//Add points to score
+function increaseScore(){
+    score++;
+    $('#score').html('Score: ' + score);
+};
+
+// Timer increments every second and logs time remaining.
 function startTimer(){
     score = 0;
     $('#score').html('Score: ' + score);
@@ -67,20 +81,20 @@ function startTimer(){
     }, 1000);
 };
 
+// Ends game when timer equals zero. Clears intervals that cause moles to appear and timer to increment. 
 function endGame(){
     if (timer == 0){
         clearInterval(gameInterval);
         clearInterval(timeInterval);
-        audio.play();
+        audio.pause();
     };
 };
 
-//Add points to score
-function increaseScore(){
-    score++;
-    $('#score').html('Score: ' + score);
-}
+// reset button begins disabled
+$('#resetButton').attr('disabled', true);
 
+// start button starts game, disables start button from being clicked again, and allows player to reset the
+// game by clicking the reset button.
 $('#startButton').click(function(){
     score = 0;
     $('#score').html('Score: ' + score);
@@ -92,50 +106,20 @@ $('#startButton').click(function(){
     $('#resetButton').attr('disabled', false);
 });
 
-$('#resetButton').attr('disabled', true);
-
+// Clears player score and sets timer back to 30s for 'new game'
 $('#resetButton').click(function(){
     score = 0;
     $('#score').html('Score: ' + score);
     timer = 30;
     $('#timer').html('Time Remaining: ' + timer+'s');
+    speed=1500;
 });
 
-$(document).on('click', '#box1', function(){
-   increaseScore();
-});
-
-$(document).on('click', '#box2', function(){
-   increaseScore();
-});
-
-$(document).on('click', '#box3', function(){
-   increaseScore();
-});
-
-$(document).on('click', '#box4', function(){
-   increaseScore();
-});
-
-$(document).on('click', '#box5', function(){
-   increaseScore();
-});
-
-$(document).on('click', '#box6', function(){
-   increaseScore();
-});
-
-$(document).on('click', '#box7', function(){
-   increaseScore();
-});
-
-$(document).on('click', '#box8', function(){
-   increaseScore();
-});
-
-$(document).on('click', '#box9', function(){
-   increaseScore();
+// Increases player score, mole appearance rate, and causes mole to disappear when clicked
+$('#box1, #box2, #box3, #box4, #box5, #box6, #box7, #box8, #box9').click(function(){
+    increaseScore();
+    $('.diglett').hide();
+    speed-=100;
 });
 
 });
-
