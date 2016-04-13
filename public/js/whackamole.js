@@ -4,6 +4,10 @@ $(document).ready(function() {
 // Looping audio that starts once start button is pressed
 var audio = new Audio('/sound/pkmnbattle.mp3');
 audio.loop = true;
+//creates global game interval variable
+var gameInterval = ''
+// creates global time interval variable
+var timeInterval = ''
 // high score variable
 var highScore = 0;
 // player score variable
@@ -40,15 +44,6 @@ function callTimer(){
     $('#timer').html('Time Remaining: ' + timer+'s');
 };
 
-// Ends game when timer equals zero. Clears intervals that cause moles to appear and timer to increment. 
-function endGame(){
-    if (timer == 0){
-        clearInterval(gameInterval);
-        clearInterval(timeInterval);
-        audio.pause();
-    };
-};
-
 //Add points to score
 function increaseScore(){
     score++;
@@ -57,8 +52,7 @@ function increaseScore(){
 
 // Randomly causes a mole to appear in one of nine div boxes.
 function startGame(){
-    var gameInterval = setInterval (function() { 
-    endGame();
+    gameInterval = setInterval (function() { 
     audio.play();
     if (x == 1){
         $('#box1.diglett').fadeIn('slow').fadeOut('slow');
@@ -86,10 +80,15 @@ function startGame(){
 function startTimer(){
     score = 0;
     $('#score').html('Score: ' + score);
-    var timeInterval = setInterval (function () {
-        endGame();
+    timeInterval = setInterval (function () {
         timer--;
         $('#timer').html('Time Remaining: ' + timer+'s');
+        if (timer == 25){
+        clearInterval(gameInterval);
+        clearInterval(timeInterval);
+        audio.pause();
+        $('#resetButton').attr('disabled', false);
+    };
     }, 1000);
 };
 
@@ -113,6 +112,9 @@ $('#resetButton').click(function(){
     callScore();
     callTimer();
     speed=1500;
+    startGame();
+    startTimer();
+    $('#resetButton').attr('disabled', true);
 });
 
 // start button starts game, disables start button from being clicked again, and allows player to reset the
