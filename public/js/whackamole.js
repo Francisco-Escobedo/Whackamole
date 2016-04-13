@@ -52,8 +52,9 @@ function increaseScore(){
 
 // Randomly causes a mole to appear in one of nine div boxes.
 function startGame(){
-    gameInterval = setInterval (function() { 
+    audio.currentTime = 0;
     audio.play();
+    gameInterval = setInterval (function() { 
     if (x == 1){
         $('#box1.diglett').fadeIn('slow').fadeOut('slow');
     } else if (x == 2){
@@ -83,7 +84,7 @@ function startTimer(){
     timeInterval = setInterval (function () {
         timer--;
         $('#timer').html('Time Remaining: ' + timer+'s');
-        if (timer == 0){
+        if (timer == 22){
         clearInterval(gameInterval);
         clearInterval(timeInterval);
         audio.pause();
