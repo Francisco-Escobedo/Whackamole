@@ -83,12 +83,12 @@ function startTimer(){
     timeInterval = setInterval (function () {
         timer--;
         $('#timer').html('Time Remaining: ' + timer+'s');
-        if (timer == 25){
+        if (timer == 0){
         clearInterval(gameInterval);
         clearInterval(timeInterval);
         audio.pause();
-        $('#resetButton').attr('disabled', false);
-    };
+        $('#startButton').attr('disabled', false);
+        };
     }, 1000);
 };
 
@@ -104,28 +104,14 @@ $('#box1, #box2, #box3, #box4, #box5, #box6, #box7, #box8, #box9').click(functio
     };
 });
 
-// reset button begins disabled
-$('#resetButton').attr('disabled', true);
-
-// Clears player score and sets timer back to 30s for 'new game'
-$('#resetButton').click(function(){
-    callScore();
-    callTimer();
-    speed=1500;
-    startGame();
-    startTimer();
-    $('#resetButton').attr('disabled', true);
-});
-
-// start button starts game, disables start button from being clicked again, and allows player to reset the
-// game by clicking the reset button.
+// start button starts game.
 $('#startButton').click(function(){
     callScore();
     startGame();
+    speed=1500;
     callTimer();
     startTimer();
     $(this).attr('disabled', true);
-    $('#resetButton').attr('disabled', false);
 });
 
 });
