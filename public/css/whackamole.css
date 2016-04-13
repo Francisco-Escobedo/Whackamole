@@ -29,7 +29,7 @@ body {
     cursor:url("/img/pokeball.png"), auto;
 }
 
-/*position of buttons*/
+/*position of the button*/
 .btn {
     position: relative;
     left: 800px;
