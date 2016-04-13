@@ -8,7 +8,7 @@
 
 .row {
     position: relative;
-    bottom: 100px;
+    bottom: 265px;
 }
 
 .digglet {
@@ -22,18 +22,33 @@
 body {
     background-image: url(/img/digletbackground.jpg);
     background-size: 100%;
+    cursor:url("/img/pokeball.png"), auto;
 }
 
 .btn {
     position: relative;
     left: 800px;
-    bottom: 750px;
+    bottom: 915px;
 }
 
 #score {
     position: relative;
     left: 670px;
-    top: 20px;
+    top: 10px;
+    font-size: 50px;
+}
+
+#highScore {
+    position: relative;
+    left: 900px;
+    bottom: 153px;
+    font-size: 50px;
+}
+
+#timer {
+    position: relative;
+    left: 670px;
+    bottom: 20px;
     font-size: 50px;
 }
 

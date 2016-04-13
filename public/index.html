@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Whack-a-Diglet Game</title>
+    <title>Whack-a-Diglett Game</title>
 
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 
@@ -12,12 +12,21 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
     <link rel="stylesheet"  href="/css/whackamole.css">
+
 </head>
 <body>
+
+<audio id="myAudio">
+  <source src="/sound/pkmnbattle.mp3">
+</audio>
 
 <img src="/img/pkmnfont.png" alt="Pokemon Font">
 
 <p class= "container" id="score"> </p>
+
+<p class= "container" id="timer"> </p>
+
+<p class= "container" id="highScore"> </p>
 
 <div class="container">
     <div class="row">
@@ -56,103 +65,11 @@
 </div>
 
 <button type="button" class="btn btn-primary" id="startButton">Start Game</button>
+<button type="button" class="btn btn-danger" id="resetButton">Restart Game</button>
 
-<!-- To be placed on JS page -->
-<script>
-(function(){
-"use strict";
+<!-- JavaScript for game -->
+<script src="/js/whackamole.js"></script>
 
-var score = 0;
-
-$('#score').html('Score: ' + score);
-
-var x = Math.floor((Math.random() * 9) + 1);
-
-var y = 0;
-
-var whackPattern = setInterval(function() {
-    x = Math.floor((Math.random() * 9) + 1);
-    }, 1000);
-
-$('.digglet').fadeOut("slow");
-
-function startGame(){ 
-
-    setInterval (function() { 
-    y=0;
-    if (x == 1){
-        $('#box1.digglet').fadeIn('slow').fadeOut('slow');
-    } else if (x == 2){
-        $('#box2.digglet').fadeIn('slow').fadeOut('slow');
-    } else if (x == 3){
-        $('#box3.digglet').fadeIn('slow').fadeOut('slow');
-    } else if (x == 4){ 
-        $('#box4.digglet').fadeIn('slow').fadeOut('slow');
-    } else if (x == 5){ 
-        $('#box5.digglet').fadeIn('slow').fadeOut('slow');
-    } else if (x == 6){ 
-        $('#box6.digglet').fadeIn('slow').fadeOut('slow');
-    } else if (x == 7){ 
-        $('#box7.digglet').fadeIn('slow').fadeOut('slow');
-    } else if (x == 8){ 
-        $('#box8.digglet').fadeIn('slow').fadeOut('slow');
-    } else if (x == 9){ 
-        $('#box9.digglet').fadeIn('slow').fadeOut('slow');
-    };
-    }, 1500);
-};
-
-$(document).on('click', '#startButton', function(){
-    startGame();
-});
-
-//Add points to score
-function increaseScore(){
-    score++;
-    $('#score').html('Score: ' + score);
-}
-
-$(document).on('click', '#box1', function(){
-   increaseScore();
-});
-
-$(document).on('click', '#box2', function(){
-   increaseScore();
-});
-
-$(document).on('click', '#box3', function(){
-   increaseScore();
-});
-
-$(document).on('click', '#box4', function(){
-   increaseScore();
-});
-
-$(document).on('click', '#box5', function(){
-   increaseScore();
-});
-
-$(document).on('click', '#box6', function(){
-   increaseScore();
-});
-
-$(document).on('click', '#box7', function(){
-   increaseScore();
-});
-
-$(document).on('click', '#box8', function(){
-   increaseScore();
-});
-
-$(document).on('click', '#box9', function(){
-   increaseScore();
-});
-
-
-
-})();
-
-</script>
 
 
 </body>
