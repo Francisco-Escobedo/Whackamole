@@ -94,11 +94,12 @@ function startTimer(){
 };
 
 // Increases player score, mole appearance rate, and causes mole to disappear when clicked. 
-// Also increases high score when score is greater than current high score.
+// Also increases high score when score is greater than current high score. With each successful click, 
+// moles appear at a faster rate.
 $('#box1, #box2, #box3, #box4, #box5, #box6, #box7, #box8, #box9').click(function(){
     increaseScore();
     $('.diglett').hide();
-    speed-=100;
+    speed-=50;
     if (score > highScore){
     highScore = score;
     $('#highScore').html('High Score: ' + highScore);
@@ -107,9 +108,9 @@ $('#box1, #box2, #box3, #box4, #box5, #box6, #box7, #box8, #box9').click(functio
 
 // start button starts game.
 $('#startButton').click(function(){
+    speed=1500;
     callScore();
     startGame();
-    speed=1500;
     callTimer();
     startTimer();
     $(this).attr('disabled', true);
