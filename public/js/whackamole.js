@@ -84,7 +84,7 @@ function startTimer(){
     timeInterval = setInterval (function () {
         timer--;
         $('#timer').html('Time Remaining: ' + timer+'s');
-        if (timer == 22){
+        if (timer == 0){
         clearInterval(gameInterval);
         clearInterval(timeInterval);
         audio.pause();
